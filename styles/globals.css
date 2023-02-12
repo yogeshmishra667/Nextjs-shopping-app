@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
+}
+
+.primary-button {
+  @apply rounded bg-amber-300 py-2 px-4 shadow outline-none;
+}
+
+.primary-button:hover {
+  @apply bg-amber-400;
+}
+
+.primary-button:active {
+  @apply bg-amber-500;
+}
+
+.ImgSize {
+  @apply w-[400px] h-[300px] object-cover;
+}
+
+input,
+select,
+textarea {
+  @apply rounded border p-2 outline-none ring-indigo-300;
+}
+
+input:focus {
+  @apply ring-2;
+}
