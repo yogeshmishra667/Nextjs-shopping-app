@@ -1,9 +1,23 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Layout from '../components/Layout';
+import { toast } from 'react-toastify';
+import { getError } from '../utils/error';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 export default function LoginScreen() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    if (session?.user) {
+      router.push(redirect || '/');
+    }
+  }, [router, session, redirect]);
+
   const {
     handleSubmit,
     register,
@@ -11,8 +25,19 @@ export default function LoginScreen() {
   } = useForm();
 
   // for the submit login form
-  const submitHandler = ({ email, password }) => {
-    console.log(email, password);
+  const submitHandler = async ({ email, password }) => {
+    try {
+      const result = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
+      if (result.error) {
+        toast.error(result.error);
+      }
+    } catch (err) {
+      toast.error(getError(err));
+    }
   };
   return (
     <Layout title="Login">
@@ -59,6 +84,7 @@ export default function LoginScreen() {
         <div className="mb-4 ">
           <button className="primary-button">Login</button>
         </div>
+
         <div className="mb-4 ">
           Don&apos;t have an account? &nbsp;
           <Link href="register">Register</Link>
