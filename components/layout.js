@@ -4,7 +4,7 @@ import { Store } from './../utils/Store';
 import { useContext, useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 
 export default function Layout({ title, children }) {
   const { data: session, status } = useSession();
@@ -31,6 +31,17 @@ export default function Layout({ title, children }) {
             <Link href="/" className="text-lg font-bold">
               Next-Shop
             </Link>
+            {session?.user && (
+              <Link
+                href="/api/auth/signout"
+                className="p-2"
+                onClick={() => signOut()}
+              >
+                {' '}
+                Logout{' '}
+              </Link>
+            )}
+
             <div>
               <Link href="/cart" className="p-2">
                 Cart

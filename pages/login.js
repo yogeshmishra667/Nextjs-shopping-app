@@ -2,10 +2,12 @@ import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Layout from '../components/Layout';
+import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { getError } from '../utils/error';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import styles from '../styles/Form.module.css';
 
 export default function LoginScreen() {
   const { data: session, status } = useSession();
@@ -39,12 +41,43 @@ export default function LoginScreen() {
       toast.error(getError(err));
     }
   };
+
+  // Google Handler function
+  async function handleGoogleSignin() {
+    signIn('google', { callbackUrl: 'http://localhost:3000' });
+  }
+
+  // Github Login
+  async function handleGithubSignin() {
+    signIn('github', { callbackUrl: 'http://localhost:3000' });
+  }
+
   return (
     <Layout title="Login">
       <form
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
+        <div className="input-button">
+          <button
+            type="button"
+            onClick={handleGoogleSignin}
+            className={styles.button_custom}
+          >
+            Sign In with Google{' '}
+            <Image src={'/images/google.svg'} width="20" height={20}></Image>
+          </button>
+        </div>
+        <div className="input-button">
+          <button
+            type="button"
+            onClick={handleGithubSignin}
+            className={styles.button_custom}
+          >
+            Sign In with Github{' '}
+            <Image src={'/images/github.svg'} width={25} height={25}></Image>
+          </button>
+        </div>
         <h1 className="mb-4 text-xl">Login</h1>
         <div className="mb-4">
           <label htmlFor="email">Email</label>
