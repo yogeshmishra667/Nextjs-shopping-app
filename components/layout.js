@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { Store } from './../utils/Store';
+import Cookies from 'js-cookie';
 import { useContext, useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,7 +11,7 @@ import { Menu } from '@headlessui/react';
 
 export default function Layout({ title, children }) {
   const { data: session, status } = useSession();
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
 
@@ -18,6 +19,14 @@ export default function Layout({ title, children }) {
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
+
+  //signout handler
+  const logoutClickHandler = () => {
+    Cookies.remove('cart');
+    dispatch({ type: 'CART_RESET' });
+    signOut({ callbackUrl: '/login' });
+  };
+
   return (
     <>
       <Head>
@@ -33,16 +42,6 @@ export default function Layout({ title, children }) {
             <Link href="/" className="text-lg font-bold">
               Next-Shop
             </Link>
-            {/* {session?.user && (
-              <Link
-                href="/api/auth/signout"
-                className="p-2"
-                onClick={() => signOut()}
-              >
-                {' '}
-                Logout{' '}
-              </Link>
-            )} */}
 
             <div>
               <Link href="/cart" className="p-2">
@@ -78,7 +77,7 @@ export default function Layout({ title, children }) {
                       <a
                         className="dropdown-link"
                         href="#"
-                        onClick={() => signOut()}
+                        onClick={logoutClickHandler}
                       >
                         Logout
                       </a>
