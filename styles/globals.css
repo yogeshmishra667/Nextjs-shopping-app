@@ -35,3 +35,11 @@ textarea {
 input:focus {
   @apply ring-2;
 }
+
+.dropdown-link {
+  @apply flex p-2;
+}
+
+.dropdown-link:hover {
+  @apply bg-gray-200;
+}
