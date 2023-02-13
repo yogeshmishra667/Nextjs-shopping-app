@@ -43,3 +43,15 @@ input:focus {
 .dropdown-link:hover {
   @apply bg-gray-200;
 }
+
+.default-button {
+  @apply rounded bg-gray-100 py-2 px-4 text-black shadow outline-none;
+}
+
+.dropdown-link:hover {
+  @apply bg-gray-200;
+}
+
+.dropdown-link:active {
+  @apply bg-gray-300;
+}
