@@ -42,6 +42,7 @@ export default function ProductScreen() {
             alt={product.name}
             width={640}
             height={640}
+            className="mainImg"
           ></Image>
         </div>
         <div>
