@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, addToCartHandler }) => {
   return (
     <div className="w-80 bg-white shadow rounded">
       <div className="h-48 w-full flex flex-col justify-between p-4 bg-cover bg-center items-center">
@@ -35,7 +35,10 @@ const ProductItem = ({ product }) => {
         <p className="text-center text-gray-800 mt-1">{product.brand}</p>
         <p className="text-center text-gray-800 mt-1">${product.price}</p>
 
-        <button className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center">
+        <button
+          className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center"
+          onClick={() => addToCartHandler(product)}
+        >
           Add to order
           <svg
             xmlns="http://www.w3.org/2000/svg"
