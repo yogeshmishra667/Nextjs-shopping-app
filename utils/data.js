@@ -54,7 +54,7 @@ const data = {
       brand: 'Oliver',
       rating: 2.9,
       numReviews: 13,
-      countInStock: 20,
+      countInStock: 0,
       description: 'Smart looking pants',
     },
     {
@@ -66,7 +66,7 @@ const data = {
       brand: 'Zara',
       rating: 3.5,
       numReviews: 7,
-      countInStock: 20,
+      countInStock: 9,
       description: 'A popular pants',
     },
     {

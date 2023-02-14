@@ -4,6 +4,7 @@
 
 * {
   box-sizing: border-box;
+  user-select: none;
 }
 
 .card {
@@ -23,7 +24,7 @@
 }
 
 .ImgSize {
-  @apply w-[400px] h-[300px] object-cover;
+  @apply w-[400px] h-[195px] object-cover;
 }
 
 input,
