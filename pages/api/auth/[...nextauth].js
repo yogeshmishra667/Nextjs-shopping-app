@@ -16,6 +16,7 @@ export default NextAuth({
   callbacks: {
     async jwt({ token, user, account }) {
       if (user) {
+        // for the github and the google providers
         token._id = user.id;
       }
       if (user?._id) token._id = user._id;
