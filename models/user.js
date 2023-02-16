@@ -4,7 +4,8 @@ const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    provider: { type: String },
+    password: { type: String },
     isAdmin: { type: Boolean, required: true, default: false },
   },
   {
@@ -13,4 +14,5 @@ const userSchema = new mongoose.Schema(
 );
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);
+
 export default User;
