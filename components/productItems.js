@@ -33,7 +33,7 @@ const ProductItem = ({ product, addToCartHandler }) => {
           <h1 className="text-gray-800 text-center mt-12">{product.name}</h1>
         </Link>
         <p className="text-center text-gray-800 mt-1">{product.brand}</p>
-        <p className="text-center text-gray-800 mt-1">${product.price}</p>
+        <p className="text-center text-gray-800 mt-1">₹{product.price}</p>
 
         <button
           className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center"

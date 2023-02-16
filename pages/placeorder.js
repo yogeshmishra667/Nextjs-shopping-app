@@ -21,8 +21,8 @@ export default function PlaceOrderScreen() {
     cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
   ); // 123.4567 => 123.46
 
-  const shippingPrice = itemsPrice > 200 ? 0 : 15;
-  const taxPrice = round2(itemsPrice * 0.15);
+  const shippingPrice = itemsPrice > 1000 ? 0 : 40;
+  const taxPrice = round2(itemsPrice * 0.1);
   const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
 
   const router = useRouter();
@@ -121,9 +121,9 @@ export default function PlaceOrderScreen() {
                         </Link>
                       </td>
                       <td className=" p-5 text-right">{item.quantity}</td>
-                      <td className="p-5 text-right">${item.price}</td>
+                      <td className="p-5 text-right">₹{item.price}</td>
                       <td className="p-5 text-right">
-                        ${item.quantity * item.price}
+                        ₹{item.quantity * item.price}
                       </td>
                     </tr>
                   ))}
@@ -141,25 +141,25 @@ export default function PlaceOrderScreen() {
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Items</div>
-                    <div>${itemsPrice}</div>
+                    <div>₹{itemsPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Tax</div>
-                    <div>${taxPrice}</div>
+                    <div>₹{taxPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Shipping</div>
-                    <div>${shippingPrice}</div>
+                    <div>₹{shippingPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Total</div>
-                    <div>${totalPrice}</div>
+                    <div>₹{totalPrice}</div>
                   </div>
                 </li>
                 <li>
