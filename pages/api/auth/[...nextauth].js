@@ -7,14 +7,13 @@ import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import clientPromise from '/lib/mongodb';
 import User from '../../../models/User';
 import db from '../../../utils/db';
-import { toast } from 'react-toastify';
 
 export default NextAuth({
   session: {
     strategy: 'jwt',
   },
   callbacks: {
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       if (user) {
         // for the github and the google providers
         token._id = user.id;
@@ -23,7 +22,7 @@ export default NextAuth({
       if (user?.isAdmin) token.isAdmin = user.isAdmin;
       return token;
     },
-    async session({ session, token, user, account }) {
+    async session({ session, token }) {
       if (token?._id) session.user._id = token._id;
       if (token?.isAdmin) session.user.isAdmin = token.isAdmin;
       return session;

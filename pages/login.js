@@ -5,12 +5,12 @@ import Layout from '../components/Layout';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { getError } from '../utils/error';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import styles from '../styles/Form.module.css';
 
 export default function LoginScreen() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
   const { redirect } = router.query;
 
@@ -65,7 +65,12 @@ export default function LoginScreen() {
             className={styles.button_custom}
           >
             Sign In with Google{' '}
-            <Image src={'/images/google.svg'} width="20" height={20}></Image>
+            <Image
+              src={'/images/google.svg'}
+              alt="image"
+              width="20"
+              height={20}
+            ></Image>
           </button>
         </div>
         <div className="input-button">
@@ -75,7 +80,12 @@ export default function LoginScreen() {
             className={styles.button_custom}
           >
             Sign In with Github{' '}
-            <Image src={'/images/github.svg'} width={25} height={25}></Image>
+            <Image
+              src={'/images/github.svg'}
+              alt="image"
+              width={25}
+              height={25}
+            ></Image>
           </button>
         </div>
         <h1 className="mb-4 text-xl">Login</h1>
