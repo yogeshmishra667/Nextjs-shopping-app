@@ -5,7 +5,7 @@ import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import clientPromise from '/lib/mongodb';
-import User from '../../../models/User';
+import User from '../../../models/user';
 import db from '../../../utils/db';
 
 export default NextAuth({

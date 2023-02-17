@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import CheckoutWizard from '../components/CheckoutWizard';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import { getError } from '../utils/error';
 import { Store } from '../utils/Store';
 

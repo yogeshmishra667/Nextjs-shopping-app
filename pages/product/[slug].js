@@ -2,12 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../components/layout';
 import { Store } from '../../utils/Store';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import Product from '../../models/Product';
+import Product from '../../models/product';
 import db from '../../utils/db';
 
 export default function ProductScreen(props) {

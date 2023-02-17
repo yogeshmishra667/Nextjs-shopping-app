@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { getError } from '../utils/error';

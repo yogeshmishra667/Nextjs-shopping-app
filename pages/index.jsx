@@ -1,9 +1,9 @@
-import Layout from '../components/Layout';
-import ProductItem from '../components/ProductItems';
+import Layout from '../components/layout';
+import ProductItem from '../components/productItems';
 import axios from 'axios';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
-import Product from '../models/Product';
+import Product from '../models/product';
 import db from '../utils/db';
 import { Store } from '../utils/Store';
 

@@ -1,4 +1,4 @@
-import Product from '../../../models/Product';
+import Product from '../../../models/product';
 import db from '../../../utils/db';
 
 const handler = async (req, res) => {

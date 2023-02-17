@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useContext } from 'react';
 import { XCircleIcon } from '@heroicons/react/24/outline';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import { Store } from '../utils/Store';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
